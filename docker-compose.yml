@@ -1,0 +1,43 @@
+version: "3"
+networks:
+    prestashop-net:
+      driver: bridge
+services:
+    mysql:
+        image: mysql:8
+        container_name: prestashop-mysql
+        tty: true
+        ports:
+            - "4206:3306"
+        volumes:
+            - "./var/lib/mysql/:/var/lib/mysql"
+        environment:
+            - MYSQL_ROOT_PASSWORD=prestashop
+        networks:
+            - prestashop-net
+    server:
+        image: prestashop/prestashop:1.7.8
+        container_name: prestashop
+        ports:
+            - "4280:80"
+        volumes:
+            - "./var/www/html/:/var/www/html"
+        environment:
+            DB_SERVER: prestashop-mysql
+        depends_on:
+            - mysql
+        networks:
+            - prestashop-net
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        depends_on:
+            - mysql
+        ports:
+            - "4000:80"
+        environment:
+            - PMA_ARBITRARY=1
+        networks:
+            - prestashop-net
+        volumes:
+            - "./var/www/html/phpmyadmin:/var/www/html/phpmyadmin"

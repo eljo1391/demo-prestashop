@@ -1,0 +1,29 @@
+version: "3"
+networks:
+    testprestashop-net:
+      driver: bridge
+services:
+    mysql:
+        image: testprestashop-bd
+        container_name: testprestashop-bd
+        tty: true
+        ports:
+            - "4201:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=prestashop
+            - MYSQL_DATABASE=prestashop
+        networks:
+            - testprestashop-net
+    server:
+        image: testprestashop
+        container_name: testprestashop
+        ports:
+            - "8000:80"
+        volumes:
+            - "../:/src"
+        environment:
+            APACHE_DOCUMENT_ROOT: /src
+        depends_on:
+            - mysql
+        networks:
+            - testprestashop-net
