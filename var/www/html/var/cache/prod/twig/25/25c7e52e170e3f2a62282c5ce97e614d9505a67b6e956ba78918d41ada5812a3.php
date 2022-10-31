@@ -187,6 +187,6 @@ class __TwigTemplate_d823882f14021d8b22484d59ddd24b9204a2cbcb03443b92d14a75bb6fe
 
     public function getSourceContext()
     {
-        return new Source("", "@PrestaShop/Admin/Exception/error.html.twig", "/var/www/html/src/PrestaShopBundle/Resources/views/Admin/Exception/error.html.twig");
+        return new Source("", "@PrestaShop/Admin/Exception/error.html.twig", "/src/src/PrestaShopBundle/Resources/views/Admin/Exception/error.html.twig");
     }
 }

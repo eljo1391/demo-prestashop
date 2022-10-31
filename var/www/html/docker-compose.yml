@@ -1,29 +1,32 @@
 version: "3"
 networks:
-    testprestashop-net:
+    demoprestashop-net:
       driver: bridge
 services:
     mysql:
-        image: testprestashop-bd
-        container_name: testprestashop-bd
+        image: demoprestashop-bd
+        container_name: demoprestashop-bd
         tty: true
         ports:
-            - "4201:3306"
+            - "4206:3306"
+        volumes:
+            - "./contenedor/lib/mysql/:/var/lib/mysql"
         environment:
             - MYSQL_ROOT_PASSWORD=prestashop
             - MYSQL_DATABASE=prestashop
         networks:
-            - testprestashop-net
+            - demoprestashop-net
     server:
-        image: testprestashop
-        container_name: testprestashop
+        image: demoprestashop
+        container_name: demoprestashop
         ports:
-            - "8000:80"
+            - "4280:80"
         volumes:
-            - "../:/src"
+            - "./:/src"
         environment:
             APACHE_DOCUMENT_ROOT: /src
+            #DB_SERVER: demoprestashop-bd
         depends_on:
             - mysql
         networks:
-            - testprestashop-net
+            - demoprestashop-net

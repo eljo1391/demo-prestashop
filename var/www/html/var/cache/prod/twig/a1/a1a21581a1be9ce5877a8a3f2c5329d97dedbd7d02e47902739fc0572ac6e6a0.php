@@ -106,6 +106,6 @@ class __TwigTemplate_affa84d7d36fbf1d4425c8b1f2776ce489a03b2a0f764dc91434db8feb0
 
     public function getSourceContext()
     {
-        return new Source("", "::base.html.twig", "/var/www/html/app/Resources/views/base.html.twig");
+        return new Source("", "::base.html.twig", "/src/app/Resources/views/base.html.twig");
     }
 }
