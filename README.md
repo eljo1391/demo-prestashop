@@ -35,4 +35,6 @@ Pasos para ejecutar el proyecto
     database: prestashop
 
 
-Obs.: Si no se puede acceder a la tienda inicialmente, dar permisos al directorio var/www/html
+Obs.: Si no se puede acceder a la tienda inicialmente, dar permisos al directorio var/www/html:
+
+    sudo chmod -R 777 var/www/html
