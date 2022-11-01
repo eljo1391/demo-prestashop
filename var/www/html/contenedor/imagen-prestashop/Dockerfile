@@ -48,5 +48,7 @@ RUN docker-php-source extract \
 
 WORKDIR /src
 
+RUN chmod -R 777 /src
+
 
 
