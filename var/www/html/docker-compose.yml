@@ -18,6 +18,7 @@ services:
             - demoprestashop-net
     server:
         image: demoprestashop
+        working_dir: /src
         container_name: demoprestashop
         ports:
             - "4280:80"
